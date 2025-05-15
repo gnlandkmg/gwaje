@@ -13,11 +13,10 @@ import lombok.experimental.SuperBuilder;
 public class Writings {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Long id;
-
-    @Column(nullable = false)
+//    @Column(nullable = false)
+//    private String title;
+    @Setter
     private String title;
-
     @Setter
     private String content;
 }

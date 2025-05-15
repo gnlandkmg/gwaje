@@ -10,19 +10,19 @@ import java.util.List;
 @RequestMapping("/print")
 @RequiredArgsConstructor
 public class PostController {
-    private final com.example.samdi3.user.PostService printService;
+    private final PostService postService;
 
     @GetMapping()
-    public String printHelloWorld() { return printService.printHelloWorld();}
+    public String printHelloWorld() { return postService.printHelloWorld();}
 
     @PostMapping()
     public void singup(@RequestBody CreateUserRequest request) {
-        printService.signup(request);
+        postService.signup(request);
     }
 
     @GetMapping("/users")
     public List<Post> findAllUsers() {
-        return printService.findAllUsers();
+        return postService.findAllUsers();
     }
 
 }

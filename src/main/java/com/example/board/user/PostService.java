@@ -1,4 +1,4 @@
-package com.example.samdi3.user;
+package com.example.board.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -8,30 +8,30 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class PostService {
-    private final UserRepository userRepository;
+    private final PostRepository PostRepository;
 
     public String printHelloWorld() {
-        User user = User.builder()
+        Post user = Post.builder()
                 .username("gnlandkmg")
                 .password("Qwer1234!")
                 .build();
 
-        userRepository.save(user);
+        PostRepository.save(user);
 
         return "Hello World!";
     }
 
     public void signup(CreateUserRequest request) {
-        User user = User.builder()
+        Post user = Post.builder()
                 .username(request.username())
                 .password(request.password())
                 .build();
 
-        userRepository.save(user);
+        PostRepository.save(user);
     }
 
 
-    public List<User> findAllUsers() {
-        return userRepository.findAll();
+    public List<Post> findAllUsers() {
+        return PostRepository.findAll();
     }
 }
