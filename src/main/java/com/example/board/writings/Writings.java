@@ -5,17 +5,19 @@ import lombok.*;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-@Entity
+
 @Getter
 @SuperBuilder
 @NoArgsConstructor
 @Table(name = "posts")
+@Setter
+@Entity
 public class Writings {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+    private Long id;
 //    @Column(nullable = false)
 //    private String title;
-    @Setter
+    @Column(unique = true, nullable = false)
     private String title;
     @Setter
     private String content;

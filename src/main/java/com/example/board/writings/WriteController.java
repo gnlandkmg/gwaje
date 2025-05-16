@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/title")
+@RequestMapping("/post")
 @RequiredArgsConstructor
 
 
@@ -13,7 +13,6 @@ public class WriteController {
 
     @PostMapping()
     public String createWritings(@RequestBody CreateWritingsRequest request) {
-        writeService.createWritings(request);
         return writeService.createWritings(request);
     }
 
@@ -33,7 +32,7 @@ public class WriteController {
 
         writeService.deleteWritings(title);
     }
-    @PatchMapping("/post")
+    @PatchMapping("/patch")
     public WritingsResponse updateWritings(@RequestBody UpdateWritings request) {
         return writeService.updateWritings(request);
     }
