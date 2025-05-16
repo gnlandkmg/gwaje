@@ -17,7 +17,7 @@ public class Writings {
     private Long id;
 //    @Column(nullable = false)
 //    private String title;
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false)
     private String title;
     @Setter
     private String content;

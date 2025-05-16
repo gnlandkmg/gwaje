@@ -1,7 +1,7 @@
 package com.example.board.writings;
 
 public record UpdateWritings(
-        String title,
+        Long id,
         String content
 ) {
 }

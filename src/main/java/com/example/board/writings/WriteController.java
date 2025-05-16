@@ -3,37 +3,38 @@ package com.example.board.writings;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/post")
 @RequiredArgsConstructor
-
-
+@CrossOrigin(origins = "*")
 public class WriteController {
     private final WriteService writeService;
 
     @PostMapping()
-    public String createWritings(@RequestBody CreateWritingsRequest request) {
-        return writeService.createWritings(request);
+    public void createWritings(@RequestBody CreateWritingsRequest request) {
+        writeService.createWritings(request);
     }
 
+
+    @GetMapping("/{id}")
+    public WritingsResponse findWritingsById(@PathVariable Long id) {
+        return writeService.findWritingsById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteWritings(@PathVariable Long id) {
+
+        writeService.deleteWritings(id);
+    }
     @PatchMapping()
-    public String delete(@RequestBody DeleteRequest request) {
-        return writeService.delete(request);
-    }
-
-
-    @GetMapping()
-    public WritingsResponse findWritingsByTitle(@RequestParam String title) {
-        return writeService.findWritingsByTitle(title);
-    }
-
-    @DeleteMapping()
-    public void deleteWritings(@RequestParam String title) {
-
-        writeService.deleteWritings(title);
-    }
-    @PatchMapping("/patch")
     public WritingsResponse updateWritings(@RequestBody UpdateWritings request) {
         return writeService.updateWritings(request);
+    }
+
+    @GetMapping()
+    public List<WritingsResponse> findAll() {
+        return writeService.findAll();
     }
 }
